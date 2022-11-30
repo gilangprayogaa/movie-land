@@ -10,7 +10,7 @@ Movie Database using Python Flask
    ```sh
    git clone https://github.com/gilangprayogaa/movie-land.git
    ```
-3. Install NPM packages
+3. Install Library
    ```sh
    pip install -r requirements.txt
    ```
