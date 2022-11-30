@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<header class="header">
+    <h1>Popular Movie</h1>
+    <form action="/movie_result" method="post">
+        <input type="text" name="movie_name" id="movie_name" placeholder="search...">
+        <input type="submit" value="Submit">
+    </form>
+</header>
+<div class="app-header">
+    <div class="movie-list-container">
+        {% for movie in data %}
+        <div class="movie-wrapper">
+            <div class="movie-title">{{movie.title}}</div>
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="movie-poster">
+            </div>
+            <div class="movie-date">{{movie.release_date}}</div>
+            <div class="movie-rate">{{movie.vote_average}}</div>
+        </div>
+        {% endfor %}
+    </div>    
+</div>
+
+{% endblock %}
