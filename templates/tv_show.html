@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+<header class="header">
+    <div>
+        <h1>Popular TV Show</h1>
+    </div>
+    
+</header>
+<div class="app-header">
+    <div class="movie-list-container">
+        {% for tv in data %}
+        <div class="movie-wrapper">
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/w500/{{tv.poster_path}}" class="movie-poster">
+            </div>
+            <div class="movie-title">{{tv.name}}</div>
+            <div class="movie-rate">
+                <img src="{{ url_for('static', filename='icon/star.png') }}" alt="" width="20px"> {{tv.vote_average}} | {{tv.first_air_date}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>    
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<header class="header">
+    <div class="header-container">
+        <h2> Result for "{{search_name}}" </h2>
+    </div>
+</header>
+<div class="border border-dark rounded rst">
+    <p class="rsec">Movies</p>
+</div>
+<div class="app-header">
+    <div class="movie-list-container">
+        {% for movies in datas %}
+        <div class="movie-wrapper">
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/w500/{{movies.poster_path}}" class="movie-poster">
+            </div>
+            <div class="movie-title">{{movies.title}}</div>
+            <div class="movie-rate">
+                <img src="{{ url_for('static', filename='icon/star.png') }}" alt="" width="20px"> {{movies.vote_average}} | {{movies.release_date}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="border border-dark rounded tvrst">
+    <p class="tvrsec">TV Shows</p>
+</div>
+<div class="app-header">
+    <div class="movie-list-container">
+        {% for tv in tvs %}
+        <div class="movie-wrapper">
+            <div class="movie-card">
+                <img src="https://image.tmdb.org/t/p/w500/{{tv.poster_path}}" class="movie-poster">
+            </div>
+            <div class="movie-title">{{tv.name}}</div>
+            <div class="movie-rate">
+                <img src="{{ url_for('static', filename='icon/star.png') }}" alt="" width="20px"> {{tv.vote_average}} | {{tv.first_air_date}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}
