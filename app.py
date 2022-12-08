@@ -4,7 +4,7 @@ import json
 
 app = Flask(__name__)
 
-api_key = "YOUR_API_KEY"
+api_key = "50608f765499e5417950395204296c05"
 baseurl = "https://api.themoviedb.org/3/movie/popular/?api_key="+api_key
 tvurl = "https://api.themoviedb.org/3/tv/popular?api_key="+api_key
 
