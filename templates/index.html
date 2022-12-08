@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+
 <header class="header">
     <div>
         <h1>Popular Movie</h1>
@@ -13,10 +14,11 @@
                 <img src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}" class="movie-poster">
             </div>
             <div class="movie-title">
-                {{movie.title}}
+                <a class="a" href="{{ url_for('detail_m', title=movie.id) }}">{{movie.title}}</a>
             </div>
             <div class="movie-rate">
-                <img src="{{ url_for('static', filename='icon/star.png') }}" alt="" width="20px"> {{movie.vote_average}} | {{movie.release_date}}
+                <span class="fa fa-star checkhed"></span>
+                {{movie.vote_average}} | {{movie.release_date}}
             </div>
         </div>
         {% endfor %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="app-header">
+    <div class="detail-list-container">
+        {% if data_detail %}
+        <div class="detail-wrapper">
+            <div class="detail-card">
+                <img src="https://image.tmdb.org/t/p/w500/{{data_detail['poster_path']}}" class="movie-poster">
+            </div>
+        </div>
+        <div class="dtitle">
+            <div class="detail-title">
+                <h2>{{ data_detail['title'] }}</h2>
+            </div>
+            <div class="detail-tagline">
+                <span>{{ data_detail['tagline'] }}</span>
+            </div>
+            <div class="detail-date">
+                {{ data_detail['release_date'] }} &nbsp;&nbsp;&nbsp;
+
+                {% for countries in data_detail['production_countries']%}
+                {{ countries.iso_3166_1 }}
+                {% endfor %}
+
+                &nbsp;&nbsp;&nbsp; {{ data_detail['runtime'] }} Min.
+            </div>
+            <hr style="margin-left: 3.2vh; height: 2px; ;background-color:black">
+            <div class="inl">
+                <i class="fa fa-star checkhed"></i>
+                {{ data_detail['vote_average'] }}
+            </div>
+            <div class="detail-vote">
+                {% for data in data_detail['genres'] %}
+                <span>&nbsp;{{ data.name }}</span>
+                {% endfor %}
+            </div>
+            <hr style="margin-left: 3.2vh; margin-top: 3.2vh; height: 2px; ;background-color:black">
+            <div class="detail-overview">
+                <p>Synopsis</p>
+                {{ data_detail['overview'] }}
+            </div>
+        </div>
+        <div class="credit-list-container">
+            <div class="cast-p">
+                <p>Cast</p>
+            </div>
+            {% for person in data_credits %}
+            {% if person.known_for_department == 'Acting' %}
+            <div class="c-card">
+                <img src="https://image.tmdb.org/t/p/w500/{{ person.profile_path }}" class="img">
+            </div>
+            <div class="credit-cast">
+                <span style="font-size: 20px;">{{ person.name }}</span><br>
+                <span style="font-size: 15px;">{{ person.character }}</span>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}        
+    </div>    
+</div>
+
+{% endblock %}

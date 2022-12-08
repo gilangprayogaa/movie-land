@@ -35,5 +35,25 @@ def tv_show():
 
     return render_template("tv_show.html", data=jsondata["results"])
 
+@app.route('/detail_m/<title>')
+def detail_m(title):
+    detail_url = "https://api.themoviedb.org/3/movie/{}?api_key={}".format(title, api_key)
+    detail_response = requests.get(detail_url).json()
+    
+    credits_url = "https://api.themoviedb.org/3/movie/{}/credits?api_key={}".format(title, api_key)
+    credits_response = requests.get(credits_url).json()
+        
+    return render_template('detail.html', data_detail=detail_response, data_credits=credits_response["cast"])
+
+@app.route('/detail_t/<name>')
+def detail_t(name):
+    details_url = "https://api.themoviedb.org/3/tv/{}?api_key={}".format(name, api_key)
+    details_response = requests.get(details_url).json()
+    
+    credits_tv_url = "https://api.themoviedb.org/3/tv/{}/credits?api_key={}".format(name, api_key)
+    credits_tv_response = requests.get(credits_tv_url).json()    
+    
+    return render_template('detail_tv.html', data_details=details_response, credits_tv=credits_tv_response["cast"])
+
 if __name__ == "__main__":
     app.run(debug=True)

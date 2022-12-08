@@ -3,8 +3,7 @@
 <header class="header">
     <div>
         <h1>Popular TV Show</h1>
-    </div>
-    
+    </div>    
 </header>
 <div class="app-header">
     <div class="movie-list-container">
@@ -13,13 +12,15 @@
             <div class="movie-card">
                 <img src="https://image.tmdb.org/t/p/w500/{{tv.poster_path}}" class="movie-poster">
             </div>
-            <div class="movie-title">{{tv.name}}</div>
+            <div class="movie-title">
+                <a class="a" href="{{ url_for('detail_t', name=tv.id) }}">{{tv.name}}</a>
+            </div>
             <div class="movie-rate">
-                <img src="{{ url_for('static', filename='icon/star.png') }}" alt="" width="20px"> {{tv.vote_average}} | {{tv.first_air_date}}
+                <span class="fa fa-star checkhed"></span>
+                {{tv.vote_average}} | {{tv.first_air_date}}
             </div>
         </div>
         {% endfor %}
     </div>    
 </div>
-
 {% endblock %}
