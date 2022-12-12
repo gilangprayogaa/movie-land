@@ -63,14 +63,18 @@ body{
 }
 
 .movie-rate{
-    margin-bottom: 24px;
-    font-size: 1,2em;
     padding-left: 5px;
+    margin-top: -1vh;
 }
 
 .movie-card{
     width: 300px;
     height: auto;
+}
+
+.movie-genre{
+    margin-top: -1.3vh;
+    margin-left: 1vh;
 }
 
 .rst{

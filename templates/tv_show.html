@@ -16,8 +16,17 @@
                 <a class="a" href="{{ url_for('detail_t', name=tv.id) }}">{{tv.name}}</a>
             </div>
             <div class="movie-rate">
-                <span class="fa fa-star checkhed"></span>
-                {{tv.vote_average}} | {{tv.first_air_date}}
+                <span class="fa fa-star checkhed" style="font-size: 3vh;"></span>
+                <span style="font-size: 3vh;">{{tv.vote_average}} | {{tv.first_air_date}}</span>
+            </div>
+            <div class="movie-genre">
+                {% for genres in tv.genre_ids %}
+                {% for datas in response_tv %}
+                {% if datas['id'] == genres %}
+                <span style="font-size: 2.5vh;">{{ datas['name'] }}</span>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
             </div>
         </div>
         {% endfor %}
