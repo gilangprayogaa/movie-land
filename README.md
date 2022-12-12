@@ -5,7 +5,7 @@
 The Movie Database using Python Flask
 
 ### Screenshot
-<!-- ![](result.gif) -->
+
 
 ### Installation
 1. Register and get your a free API Key at [https://www.themoviedb.org/](https://www.themoviedb.org/)
